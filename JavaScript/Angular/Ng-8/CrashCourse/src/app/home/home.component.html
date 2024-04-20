@@ -1,0 +1,30 @@
+
+
+<div style="width:100%">
+    <div style="width:40%;display:inline-block;">
+        <ul *ngIf="users">
+            <li *ngFor="let user of users">
+                <img [src]="user.avatar">
+                <p>{{user.first_name}} {{user.last_name}}</p>
+            </li>
+        </ul>
+    </div>
+
+    <div style="width:50%;display:inline-block;vertical-align:top;padding-left:30px;">
+        <h1 [class.gray]="h1Style">Class Binding</h1>
+
+        <h1 [style.color]="h1Style?'gray':'green'">Style Binding</h1>
+
+        <h1 [ngClass]="{
+            'gray': h1Style,
+            'large': !h1Style
+        }">ngClass Directive</h1>
+
+        <h1 [ngStyle]="{
+            'color': h1Style? 'gray':'black',
+            'font-size': !h1Style? '4em': '1.5em'
+        }">ngStyle Directive</h1>
+
+        <button (click)="firstClick()">Click</button>
+    </div>
+</div>

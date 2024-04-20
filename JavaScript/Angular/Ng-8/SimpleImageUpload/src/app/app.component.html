@@ -1,0 +1,22 @@
+<h1>Upload File</h1>
+
+<form [formGroup]="fileForm" (ngSubmit)="onSubmit()">
+  <label>
+    Caption:
+    <input type="text" formControlName="caption">
+    <div *ngIf="submitted && fileForm.controls.caption.errors" class="error">
+      <div *ngIf="fileForm.controls.caption.errors.required">Please enter the caption.</div>
+    </div>
+  </label>
+
+  <label>
+    File:
+    <input type="file" formControlName="file" (change)="getFile($event)">
+    <div *ngIf="submitted && fileForm.controls.file.errors" class="error">
+      <div *ngIf="fileForm.controls.file.errors.required">Please choose the file.</div>
+      <div *ngIf="fileForm.controls.file.errors.requiredFileType">Please choose PNG file.</div>
+    </div>
+  </label>
+
+  <input type="submit" value="Upload Image">
+</form>
